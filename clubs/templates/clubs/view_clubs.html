@@ -1,0 +1,125 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+{% load static from static %}
+<title>Player Profile</title>
+<section id="content">
+    <!--breadcrumbs start-->
+  <div id="breadcrumbs-wrapper">
+    <!-- Search for small screen -->
+    <div class="header-search-wrapper grey hide-on-large-only">
+        <i class="mdi-action-search active"></i>
+        <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize">
+    </div>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <h5 class="breadcrumbs-title">View Clubs</h5>
+        <ol class="breadcrumbs">
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="#">Clubs</a></li>
+            <li class="active">View Clubs</li>
+        </ol>
+        {% for message in messages %}
+        <div id="card-alert" class="card {{ message.tags }}">
+            <div class="card-content white-text">
+              <p>{{ message }}</p>
+            </div>
+            <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+      </div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<!--breadcrumbs end-->               
+
+  <!--start container-->
+  <div class="container">
+    <div id="profile-page" class="section">
+      <!-- profile-page-content -->
+      <div class="center">
+        <img src="/media/{{ clubs.image }}" alt="Club Image"><h1>{{ clubs.name }}</h1>
+      </div>
+      <div class="center">
+          <h5>Roster</h5>
+      </div>
+      <div id="profile-page-wall" class="col s12 m8">
+        <!-- profile-page-wall-share -->
+        <div id="profile-page-wall-share" class="row">
+          <div class="col s12">
+            <ul class="tabs tab-profile z-depth-1 light-blue">
+              <li class="tab col s3"><a class="white-text waves-effect waves-light active" href="#Goalkeepers"><i class="mdi-maps-directions-walk"></i>Goalkeepers</a>
+              </li>
+              <li class="tab col s3"><a class="white-text waves-effect waves-light" href="#Defenders"><i class="mdi-maps-directions-walk"></i>Defenders</a>
+              </li>
+              <li class="tab col s3"><a class="white-text waves-effect waves-light" href="#Midfielders"><i class="mdi-maps-directions-walk"></i>Midfielders</a>
+              </li>
+              <li class="tab col s3"><a class="white-text waves-effect waves-light" href="#Forwards"><i class="mdi-maps-directions-walk"></i>Forwards</a>
+              </li>                      
+            </ul>
+            <!-- Goalkeepers-->
+            <div id="Goalkeepers" class="tab-content col s12  grey lighten-4">
+            {% if not goalkeepers %}
+            <h4 class="center pink-text">No Goalkeepers Available</h4>
+            {% endif %}
+              <table class="striped">
+                  {% for goalkeeper in goalkeepers %}
+                  <tr>
+                      <td class="league-clubs"><h5>#{{ goalkeeper.jersey_number }} {{ goalkeeper.name}} {{ goalkeeper.surname }}</h5></td>
+                  </tr>
+                  {% endfor %}
+              </table>
+            </div>
+            <!-- Defenders -->
+            <div id="Defenders" class="tab-content col s12  grey lighten-4">
+                {% if not defenders %}
+                <h4 class="center pink-text">No Defenders Available</h4>
+                {% endif %}
+                  <table class="striped">
+                      {% for defender in defenders %}
+                      <tr>
+                          <td class="league-clubs"><h5>#{{ defender.jersey_number }} {{ defender.name}} {{ defender.surname }}</h5></td>
+                      </tr>
+                      {% endfor %}
+                  </table>
+            </div>
+            <!-- Midfielders -->
+            <div id="Midfielders" class="tab-content col s12  grey lighten-4">
+                {% if not midfielders %}
+                <h4 class="center pink-text">No Midfielders Available</h4>
+                {% endif %}
+                  <table class="striped">
+                      {% for midfielder in midfielders %}
+                      <tr>
+                          <td class="league-clubs"><h5>#{{ midfielder.jersey_number }} {{ midfielder.name}} {{ midfielder.surname }}</h5></td>
+                      </tr>
+                      {% endfor %}
+                  </table>
+            </div>
+
+            <!-- Forwards -->
+            <div id="Forwards" class="tab-content col s12  grey lighten-4">
+                {% if not forwards %}
+                <h4 class="center pink-text">No forwards Available</h4>
+                {% endif %}
+                <table class="striped">
+                    {% for forward in Forwards %}
+                    <tr>
+                        <td class="league-clubs"><h5>#{{ forward.jersey_number }} {{ forward.name}} {{ forward.surname }}</h5></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+          </div>
+        </div>
+        <!--/ profile-page-wall-share -->
+    </div>
+  </div>
+  <!--end container-->
+</section>
+<!-- END CONTENT -->
+
+{% endblock %}

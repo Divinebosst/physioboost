@@ -1,0 +1,157 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+{% load static from static %}
+<title>Player Profile</title>
+<section id="content">        
+
+  <!--start container-->
+  <div class="container">
+
+    <div id="profile-page" class="section">
+      <!-- profile-page-header -->
+      <div id="profile-page-header" class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="{% static 'images/user-profile-bg.jpg' %}" alt="user background">
+              <h5 class="jersey_number hide-on-med-and-down">{{ player.jersey_number }}</h5>                    
+          </div>
+          <figure class="card-profile-image hide-on-med-and-down">
+              <img src="{{ player.image.url }}" alt="profile image" class="circle z-depth-2 responsive-img activator">
+          </figure>
+          <div class="card-content">
+            <div class="row">                    
+              <div class="col s3 offset-s2">                        
+                  <h4 class="card-title grey-text text-darken-4">{{ player.name }} {{ player.surname }} </h4>
+                  <p class="medium-small grey-text">{{ player.position }} </p>                        
+              </div>                
+            </div>
+          </div>
+      </div>
+      <!--/ profile-page-header -->
+
+      <!-- profile-page-content -->
+      <div id="profile-page-content" class="row">
+        <!-- profile-page-sidebar-->
+        <div id="profile-page-sidebar" class="col s12 m4">
+          <!-- Profile About  -->
+          <div class="card light-blue">
+            <div class="card-content white-text">
+              <span class="card-title">Biography</span>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>                  
+          </div>
+          <!-- Profile About  -->
+        </div>
+        <!-- profile-page-sidebar-->
+
+        <!-- profile-page-wall -->
+        <div id="profile-page-wall" class="col s12 m8">
+          <!-- profile-page-wall-share -->
+          <div id="profile-page-wall-share" class="row">
+            <div class="col s12">
+              <ul class="tabs tab-profile z-depth-1 light-blue">
+                <li class="tab col s3"><a class="white-text waves-effect waves-light active" href="#Personal"><i class="mdi-editor-border-color"></i>Personal Details</a>
+                </li>
+                <li class="tab col s3"><a class="white-text waves-effect waves-light" href="#Demographics"><i class="mdi-image-camera-alt"></i>Demographics</a>
+                </li>
+                <li class="tab col s3"><a class="white-text waves-effect waves-light" href="#Attributes"><i class="mdi-image-photo-album"></i>Attributes</a>
+                </li>                      
+              </ul>
+              <!-- UpdateStatus-->
+              <div id="Personal" class="tab-content col s12  grey lighten-4">
+                <div class="row">
+                  <div class="col s4 center-align">
+                    <h6 class="card-title grey-text text-darken-4">Birthday</h6>
+                    <p class="medium-small grey-text">{{ player.date_of_birth }}</p>                        
+                </div>        
+                <div class="col s4 center-align">
+                  <h6 class="card-title grey-text text-darken-4">Nationality</h6>
+                  <p class="medium-small grey-text">{{ player.nationality }}</p>                        
+                </div>        
+                <div class="col s4 center-align">
+                  <h6 class="card-title grey-text text-darken-4">Age</h6>
+                  <p class="medium-small grey-text">{{ player.age }}</p>                        
+                </div>        
+                </div>
+              </div>
+              <!-- AddPhotos -->
+              <div id="Demographics" class="tab-content col s12  grey lighten-4">
+                <div class="row">
+                  <div class="col s4 center-align">
+                    <h6 class="card-title grey-text text-darken-4">Height</h6>
+                    <p class="medium-small grey-text">{{ player.height }} m</p>                        
+                  </div> 
+                  <div class="col s4 center-align">
+                    <h6 class="card-title grey-text text-darken-4">Weight</h6>
+                    <p class="medium-small grey-text">{{ player.weight }} kgs</p>                        
+                  </div>               
+                </div>
+              </div>
+              <!-- CreateAlbum -->
+              <div id="Attributes" class="tab-content col s12  grey lighten-4">
+                <div class="row">
+                  <div class="col s4 center-align">
+                    <h6 class="card-title grey-text text-darken-4">Strengths</h6>
+                    <p class="medium-small grey-text">{{ player.strengths }}</p>                        
+                  </div>
+                  <div class="col s4 center-align">
+                    <h6 class="card-title grey-text text-darken-4">Weaknesses</h6>
+                    <p class="medium-small grey-text">{{ player.weaknesses }}</p>                        
+                  </div>
+                  <div class="col s4 center-align">
+                    <h6 class="card-title grey-text text-darken-4">Preferred Foot</h6>
+                    <p class="medium-small grey-text">{{ player.preferred_foot }}</p>                        
+                  </div><br><br><br>
+                  <div class="col s4 center-align">
+                    <h6 class="card-title grey-text text-darken-4">Jersey Number</h6>
+                    <p class="medium-small grey-text">{{ player.jersey_number }}</p>                        
+                  </div>                
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/ profile-page-wall-share -->
+          <!--Accordion Options-->
+          <div id="stats">
+            <h4 class="header center">Career Stats</h4>
+            <div class="row">
+              {% if not stats %}
+              <h4 class="center pink-text">No Stats Available</h4>
+              {% endif %}
+              {% for stat in stats %}
+              <div class="col s12 m8 l12">
+                <ul class="collapsible popout collapsible-accordion" data-collapsible="accordion">
+                  <li>
+                    <div class="collapsible-header"><i class="mdi-action-assignment"></i>{{ stat.season }} <img height="20px" src="/media/{{ stat.clubimage }}" alt="Club Image" class="circle clubimage"> {{ stat.clubname }}</div>
+                    <div class="collapsible-body">
+                      <div class="row">
+                        <table class="table-responsive">
+                          <thead>
+                            <tr>
+                              <th>Goals</th>
+                              <th>Assists</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td><h5>{{ stat.dgoals }}</h5></td>
+                              <td><h5>{{ stat.dassists }}</h5></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              {% endfor %}
+            </div>
+          <!--Accordion Options-->
+      </div>
+    </div>
+  </div>
+  </div>
+  <!--end container-->
+</section>
+<!-- END CONTENT -->
+
+{% endblock %}

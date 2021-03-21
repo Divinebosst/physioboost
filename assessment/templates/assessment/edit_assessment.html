@@ -1,0 +1,340 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+{% load static from static %}
+<title>Assessing Player </title>
+<section id="content"> 
+  <!--breadcrumbs start-->
+  <div id="breadcrumbs-wrapper">
+    <!-- Search for small screen -->
+    <div class="header-search-wrapper grey hide-on-large-only">
+        <i class="mdi-action-search active"></i>
+        <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize">
+    </div>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <h5 class="breadcrumbs-title">Assess Player</h5>
+        <ol class="breadcrumbs">
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="#">Assessment</a></li>
+            <li class="active">Assess Player</li>
+        </ol>
+        {% for message in messages %}
+        <div id="card-alert" class="card {{ message.tags }}">
+            <div class="card-content white-text">
+              <p>{{ message }}</p>
+            </div>
+            <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+      </div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<!--breadcrumbs end-->       
+
+  <!--start container-->
+  <div class="container">
+
+    <div id="profile-page" class="section">
+      <!-- profile-page-content -->
+      <div id="profile-page-content" class="row">
+        <!-- profile-page-wall -->
+        <div id="profile-page-wall" class="col s12 m12">
+          <!-- profile-page-wall-share -->
+          <div id="profile-page-wall-share" class="row">
+            <div class="col s12">
+              <ul class="tabs tab-profile z-depth-1 cyan">
+                <li class="tab col s4"><a class="white-text waves-effect waves-light active" href="#Subjective"><i class="mdi-editor-border-color"></i>Subjective Assessment</a>
+                </li>
+                <li class="tab col s4"><a class="white-text waves-effect waves-light" href="#Objective"><i class="mdi-image-camera-alt"></i>Objective Assessment</a>
+                </li>
+                <li class="tab col s4"><a class="white-text waves-effect waves-light" href="#Functional"><i class="mdi-image-photo-album"></i>Functional Assessment</a>
+                </li>                      
+              </ul>
+              <br>
+              <form class="col-lg-12" method="post" enctype="multipart/form-data">
+                {% csrf_token %}   
+                <!-- UpdateStatus-->
+                <div id="Subjective">
+                  <h5 class="center">Presenting Complaints</h5>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.complaint }}
+                      <label for="complaint">Complaint</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <i class="mdi-action-account-circle prefix"></i>
+                        <div class="select-wrapper">
+                            {{ form.history }}
+                            <label class="label-wrapper" for="history">History</label>
+                        </div>
+                    </div>
+                  </div>
+                  <h5 class="center">Characteristics</h5>
+                  <div class="row">
+                    <div class="input-field col s4">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.duration }}
+                      <label class="label-wrapper" for="duration">Duration</label>
+                    </div>
+
+                    <div class="input-field col s4">
+                      <i class="mdi-action-account-circle prefix"></i>
+                      <div class="select-wrapper">
+                          {{ form.intensity }}
+                          <label class="label-wrapper" for="intensity">Intensity</label>
+                      </div>
+                    </div>
+                    <div class="input-field col s4">
+                      <i class="mdi-action-account-circle prefix"></i>
+                      <div class="select-wrapper">
+                        {{ form.location }}
+                        <label class="label-wrapper" for="location">Location</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h5 class="center">Investigations</h5>
+                  <h6 class="center">X-Ray</h6>
+                  <div class="row">
+                    <div class="input-field col s4">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.x_ray }}
+                      <label class="label-wrapper" for="x_ray">X-Ray</label>
+                    </div>
+
+                    <div class="input-field col s4">
+                      <i class="mdi-action-account-circle prefix"></i>
+                      <div class="select-wrapper">
+                          {{ form.view }}
+                          <label class="label-wrapper" for="view">View</label>
+                      </div>
+                    </div>
+
+                    <div class="input-field col s4">
+                      <i class="mdi-action-account-circle prefix"></i>
+                      <div class="select-wrapper">
+                          {{ form.findings }}
+                          <label class="label-wrapper" for="findings">Findings</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- AddPhotos -->
+                <div id="Objective" class="tab-content col s12  grey lighten-4">
+                  <h5 class="center">General Observations</h5>
+                  <h6 class="center">Palpation</h6>
+                  <div class="row">
+                    <div class="input-field col s3">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.tenderness_grade }}
+                      <label for="tenderness_grade">Tenderness Grade</label>
+                    </div>
+
+                    <div class="input-field col s2">
+                        <i class="mdi-action-account-circle prefix"></i>
+                        <div class="select-wrapper">
+                            {{ form.spasm }}
+                            <label class="label-wrapper" for="history">Spasm</label>
+                        </div>
+                    </div>
+
+                    <div class="input-field col s2">
+                      <i class="mdi-action-account-circle prefix"></i>
+                      <div class="select-wrapper">
+                          {{ form.scar }}
+                          <label class="label-wrapper" for="scar">Scar</label>
+                      </div>
+                    </div>
+
+                    <div class="input-field col s2">
+                      <i class="mdi-action-account-circle prefix"></i>
+                      <div class="select-wrapper">
+                          {{ form.swelling }}
+                          <label class="label-wrapper" for="swelling">Swelling</label>
+                      </div>
+                    </div>
+
+                    <div class="input-field col s3">
+                      <i class="mdi-action-account-circle prefix"></i>
+                      <div class="select-wrapper">
+                          {{ form.skin }}
+                          <label class="label-wrapper" for="skin">Skin</label>
+                      </div>
+                    </div>
+                  </div>
+                  <h6 class="center">Range of Motion</h6>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.joint }}
+                      <label for="joint">Joint</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.rom }}
+                      <label for="rom">ROM</label>
+                    </div>
+                  </div>
+
+                  <h6 class="center">Manual Muscle Testing</h6>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.muscle_group }}
+                      <label for="muscle_group">Muscle Group</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.mrc_grade }}
+                      <label for="mrc_grade">MRC Grade</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.end_feel }}
+                      <label for="end_feel">End Feel</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.types }}
+                      <label for="types">Types</label>
+                    </div>
+                  </div>
+
+                  <h6 class="center">Reflexes</h6>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.reflex_type }}
+                      <label for="reflex_type">Type</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.reflex_condition }}
+                      <label for="reflex_condition">Condition</label>
+                    </div>
+                  </div>
+
+                </div>
+                <!-- CreateAlbum -->
+                <div id="Functional" class="tab-content col s12  grey lighten-4">
+                  <div class="row">
+                    <h5 class="center">Special Tests</h5>
+                    <div class="input-field col s4">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.test }}
+                      <label for="test">Test</label>
+                    </div>
+
+                    <div class="input-field col s4">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.result }}
+                      <label for="result">Result</label>
+                    </div>
+
+                    <div class="input-field col s4">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.interpretation }}
+                      <label for="interpretation">Interpretation</label>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <h5 class="center">Gait Assessment</h5>
+                    <div class="input-field col s4">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.type_of_gait }}
+                      <label for="type_of_gait">Type of Gait</label>
+                    </div>
+
+                    <div class="input-field col s4">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.step_length }}
+                      <label for="step_length">Step Length</label>
+                    </div>
+
+                    <div class="input-field col s4">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.stride_length }}
+                      <label for="stride_length">Stride Length</label>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <h5 class="center">Goals</h5>
+                    <div class="input-field col s6">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.short_term }}
+                      <label for="short_term">Short Term</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.long_term }}
+                      <label for="long_term">Long Term</label>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <h5 class="center">Treatment Plan</h5>
+                    <div class="input-field col s6">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.modalities }}
+                      <label for="modalities">Modalities</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.manipulations }}
+                      <label for="manipulations">Manipulations</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.exercises }}
+                      <label for="exercises">Exercises</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.splints }}
+                      <label for="splints">Splints</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <h5 class="center">Injury</h5>
+                    <div class="input-field col s6">
+                      <i class="mdi-editor-insert-invitation prefix"></i>
+                      {{ form.injury }}
+                      <label for="manipulations">Injury</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="center">
+                  <button class="btn waves-effect waves-light" type="submit" name="action">Edit Assessment</button>
+                </div><br>
+              </form>
+            </div>
+          </div>
+          <!--/ profile-page-wall-share -->
+      </div>
+    </div>
+  </div>
+  </div>
+  <!--end container-->
+</section>
+<!-- END CONTENT -->
+
+{% endblock %} 

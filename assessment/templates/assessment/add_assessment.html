@@ -1,0 +1,263 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+{% load static from static %}
+<title>Assessing Player </title>
+<section id="content">
+  <!--breadcrumbs start-->
+  <div id="breadcrumbs-wrapper">
+    <!-- Search for small screen -->
+    <div class="header-search-wrapper grey hide-on-large-only">
+        <i class="mdi-action-search active"></i>
+        <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize">
+    </div>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <h5 class="breadcrumbs-title">Assess Player</h5>
+        <ol class="breadcrumbs">
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="#">Assessment</a></li>
+            <li class="active">Assess Player</li>
+        </ol>
+        {% for message in messages %}
+        <div id="card-alert" class="card {{ message.tags }}">
+            <div class="card-content white-text">
+              <p>{{ message }}</p>
+            </div>
+            <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+      </div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<!--breadcrumbs end-->
+
+  <!--start container-->
+  <div class="container">
+    <div class="section">
+      <!--Input fields-->
+      <div id="input-fields">
+        <div class="row">
+          <div class="col s12 m12 l12">
+            <div class="row">
+              <form class="col s12" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <h5 class="center">ASSESSMENT</h5>
+                <div class="row col l12 m12 s12">
+                    <h5 class="center">Injured Body Part</h5>
+                    {% for field in form.injured_body_parts %}
+                    <div class="input-field col l2 m3 s6" style="line-height: 4rem;">
+                      {{ field.tag }}
+                      <label for="{{ field.id_for_label }}">{{ field.choice_label }}</label>
+                    </div>
+                    {% endfor %}
+                </div><br>
+
+                <div class="row col l12 m12 s12">
+                    <h5 class="center">Injury Type</h5>
+                    {% for field in form.injury_type %}
+                    <div class=" input-field col l3 m3 s6" style="line-height: 4rem;">
+                      {{ field.tag }}
+                      <label for="{{ field.id_for_label }}">{{ field.choice_label }}</label>
+                    </div>
+                    {% endfor %}
+                </div><br>
+
+                <div class="row col l12 m12 s12">
+                  <div class="input-field col l12 m12 s12">
+                    {{ form.other_injury }}
+                  <label for="other_injury">Other Injury</label>
+                </div><br>
+
+                <div class="row col l12 m12 s12">
+                  <h5 class="center">Diagnosis</h5>
+                  <div class="input-field col s12 m6 l12">
+                    {{ form.diagnosis }}
+                  <label for="other_injury">Diagnosis</label>
+                </div><br>
+
+                <div class="row col l12 m12 s12">
+                    <h5 class="center">Is this injury a recurrence</h5>
+                    {% for field in form.injury_previous %}
+                    <div class="col l4 m3 s6" style="line-height: 4rem;">
+                      {{ field.tag }}
+                      <label for="{{ field.id_for_label }}">{{ field.choice_label }}</label>
+                    </div>
+                    {% endfor %}
+                </div><br>
+
+
+                <div class="row">
+                  <div class="input-field col s12 m12 l12">
+                    <h5 class="center">Cause of Injury</h5>
+                    {% for field in form.injury_cause %}
+                    <div class="col l2 m3 s6" style="line-height: 4rem;">
+                      {{ field.tag }}
+                      <label for="{{ field.id_for_label }}">{{ field.choice_label }}</label>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div><br>
+
+                <div class="row">
+                  <div class="input-field col s12 m12 l12">
+                    <h5 class="center">When did the injury occur?</h5>
+                    {% for field in form.injury_occur %}
+                    <div class="col l2 m3 s6" style="line-height: 4rem;">
+                      {{ field.tag }}
+                      <label for="{{ field.id_for_label }}">{{ field.choice_label }}</label>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div><br>
+
+                <div class="row col l12 m12 s12">
+                  <div class="input-field col l12 m12 s12">
+                    {{ form.injury_occur_other }}
+                  <label for="injury_occur_other">Other</label>
+                </div><br>
+
+                <div class="row">
+                  <div class="input-field col s12 m12 l12">
+                    <h5 class="center">Was the injury caused by contact or collision?</h5>
+                    {% for field in form.injury_co %}
+                    <div class="col l4 m3 s6" style="line-height: 4rem;">
+                      {{ field.tag }}
+                      <label for="{{ field.id_for_label }}">{{ field.choice_label }}</label>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div><br>
+
+                <div class="row col l12 m12 s12">
+                  <div class="input-field col l12 m12 s12">
+                    {{ form.other_collision }}
+                  <label for="other_injury">Yes, with other object(specify)</label>
+                </div><br>
+
+                <div class="row">
+                  <div class="input-field col s12 m12 l12">
+                    <h5 class="center">Did the referee indicate that the action leading to the injury was a violation of the laws?</h5>
+                    {% for field in form.injury_violation %}
+                    <div class="col l4 m3 s6" style="line-height: 4rem;">
+                      {{ field.tag }}
+                      <label for="{{ field.id_for_label }}">{{ field.choice_label }}</label>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div><br>
+
+                <div class="row">
+                  <div class="input-field col s12 m12 l12">
+                    <h6 class="center">If YES, who was the referee's sanction against</h6>
+                    {% for field in form.referee_sanction %}
+                    <div class="col l2 m3 s6" style="line-height: 4rem;">
+                      {{ field.tag }}
+                      <label for="{{ field.id_for_label }}">{{ field.choice_label }}</label>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div><br>
+
+                <div class="row">
+                  <div class="input-field col s12 m12 l12">
+                    <h5 class="center">Advice Given</h5>
+                    {% for field in form.advice_given %}
+                    <div class="col l3 m3 s6" style="line-height: 4rem;">
+                      {{ field.tag }}
+                      <label for="{{ field.id_for_label }}">{{ field.choice_label }}</label>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div><br>
+
+                <div class="row col l12 m12 s12">
+                  <div class="input-field col l12 m12 s12">
+                    {{ form.other_advice_given }}
+                  <label for="other_advice_given">Other</label>
+                </div><br>
+
+                <div class="row">
+                  <div class="input-field col s12 m12 l12">
+                    <h5 class="center">Referral</h5>
+                    {% for field in form.referral %}
+                    <div class="col l3 m3 s6" style="line-height: 4rem;">
+                      {{ field.tag }}
+                      <label for="{{ field.id_for_label }}">{{ field.choice_label }}</label>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div><br>
+
+                <div class="row col l12 m12 s12">
+                  <div class="input-field col l12 m12 s12">
+                    {{ form.other_referral }}
+                  <label for="other_advice_given">Other</label>
+                </div><br>
+
+                <div class="row">
+                  <div class="input-field col s12 m12 l12">
+                    <h5 class="center">Was protective equipment worn on the body parts?</h5>
+                    {% for field in form.protective_equipment %}
+                    <div class="col l4 m3 s6" style="line-height: 4rem;">
+                      {{ field.tag }}
+                      <label for="{{ field.id_for_label }}">{{ field.choice_label }}</label>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div><br>
+
+                <div class="row col l12 m12 s12">
+                  <div class="input-field col l12 m12 s12">
+                    {{ form.other_protective_equipment }}
+                  <label for="other_injury">If yes, what? e.g. mouth guard, brace?  </label>
+                </div><br>
+
+
+                <div class="row">
+                  <div class="input-field col s12 m12 l12">
+                    <h5 class="center"> Provisional Severity Assessment</h5>
+                    {% for field in form.severity %}
+                    <div class="col l4 m3 s6" style="line-height: 4rem;">
+                      {{ field.tag }}
+                      <label for="{{ field.id_for_label }}">{{ field.choice_label }}</label>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div><br>
+
+                <div class="row">
+                  <div class="input-field col s12 m12 l12">
+                    <h5 class="center">Action Taken</h5>
+                    {% for field in form.action_taken %}
+                    <div class="col l2 m3 s6" style="line-height: 4rem;">
+                      {{ field.tag }}
+                      <label for="{{ field.id_for_label }}">{{ field.choice_label }}</label>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div><br>
+                <div class="center">
+                  <button class="btn waves-effect waves-light" type="submit" name="action">Add Assessment</button>
+                </div><br>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <!-- Floating Action Button -->
+</div>
+<!--end container-->
+
+</section>
+<!-- END CONTENT -->
+<!-- END CONTENT -->
+
+{% endblock %}
+

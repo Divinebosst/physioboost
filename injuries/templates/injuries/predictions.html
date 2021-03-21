@@ -1,0 +1,99 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+<title>PhysioBoost: Injury Prediction</title>
+ <!-- START CONTENT -->
+ <section id="content">
+        
+    <!--breadcrumbs start-->
+    <div id="breadcrumbs-wrapper">
+        <!-- Search for small screen -->
+        <div class="header-search-wrapper grey hide-on-large-only">
+            <i class="mdi-action-search active"></i>
+            <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize">
+        </div>
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m12 l12">
+            <h5 class="breadcrumbs-title">Injury Prediction</h5>
+            <ol class="breadcrumbs">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="#">Injuries</a></li>
+                <li class="active">Injury Prediction</li>
+            </ol>
+            {% for message in messages %}
+            <div id="card-alert" class="card {{ message.tags }}">
+                <div class="card-content white-text">
+                  <p>{{ message }}</p>
+                </div>
+                <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+          </div>
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--breadcrumbs end-->
+    
+
+    <!--start container-->
+    <div class="container">
+      <div class="section">
+          <div class="row">
+            
+            <div class="col s12 m8 l12">
+
+                <h5>The AI has predicted that <b>{{ player.name }} {{ player.surname }}</b> is likely to suffer from the following injury: </h5><br>
+
+                <h4 class="pink-text lighten-4">{{ classification }}</h4><br>
+
+                <h5>This is based on the following individual player data: </h5><br>
+
+                <table class="striped responsive-table display" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Age</th>
+                            <th>Height</th>
+                            <th>Weight</th>
+                        </tr>
+                    </thead>
+                 
+                    <tbody>
+                            <td>{{ player.age }}</td>
+                            <td>{{ player.height }}</td>
+                            <td>{{ player.weight }}</td>
+                        </tr>
+                    </tbody>
+                  </table><br>
+
+                  <h5 class="green white-text">Physios are therefore encouraged to employ preventative measures against the occurence of this injury</h5>
+
+              
+            </div>
+          </div>
+        </div> 
+        <br>
+      <!-- Floating Action Button -->
+        <div class="fixed-action-btn" style="bottom: 50px; right: 19px;">
+            <a class="btn-floating btn-large">
+              <i class="mdi-action-stars"></i>
+            </a>
+            <ul>
+              <li><a href="css-helpers.html" class="btn-floating red"><i class="large mdi-communication-live-help"></i></a></li>
+              <li><a href="app-widget.html" class="btn-floating yellow darken-1"><i class="large mdi-device-now-widgets"></i></a></li>
+              <li><a href="app-calendar.html" class="btn-floating green"><i class="large mdi-editor-insert-invitation"></i></a></li>
+              <li><a href="app-email.html" class="btn-floating blue"><i class="large mdi-communication-email"></i></a></li>
+            </ul>
+        </div>
+        <!-- Floating Action Button -->
+        
+    </div>
+    <!--end container-->
+
+  </section>
+  <!-- END CONTENT -->
+{% endblock %}

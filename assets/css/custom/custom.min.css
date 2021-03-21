@@ -1,0 +1,100 @@
+.prefix ~ .select-wrapper {
+    margin-left: 3rem;
+    width: calc(100% - 3rem);
+}
+
+.label-wrapper{
+    margin-left: -0.7rem;
+}
+
+@media only screen and (min-width : 992px) {
+.signup-form {
+    width: 700px;
+}
+
+}
+
+.errorlist{
+margin-left: 3rem;
+font-size: small;
+color: #ff4081;
+}
+
+tr th, td {
+    text-align: center;
+}
+
+.NotSevere{
+    background-color: #66BB6A !important;
+}
+
+.Severe{
+    background-color: #EF5350 !important;
+}
+
+.jersey_number{
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 16rem;
+    font-weight: 800;
+    color: beige;
+}
+
+.clubimage{
+    height: 2rem;
+    vertical-align: middle;
+}
+
+.league-clubs{
+    text-align: left;
+    padding-left: 30px;
+}
+
+.Injured{
+    background-color: #EF5350;
+}
+
+.Status1{
+    background-color: #EF5350 !important;
+}
+
+.Status2{
+    background-color: #f1f511 !important;
+}
+
+.Status3{
+    background-color: #46eb14 !important;
+}
+
+.Status4{
+    background-color: #da11f5 !important;
+}
+
+.Status5{
+    background-color: #bdbbbb !important;
+}
+
+.tablebordered{
+    border: 1px solid rgb(194, 190, 190);
+}
+
+.tdwidthsize{
+    width: 3%;
+}
+
+.trwidthsize{
+    width: 10%;
+}
+
+.cellheight{
+    height: 2px;
+}
+
+.pricing-bg-color{
+    background-color: #00bcd4;
+}
+
+li::marker{
+    color: #00bcd4;
+}

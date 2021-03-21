@@ -1,0 +1,106 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+{% load static from static %}
+<section id="content">        
+
+  <!--start container-->
+  <div class="container">
+
+    <div id="profile-page" class="section">
+      <!-- profile-page-header -->
+      <div id="profile-page-header" class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="{% static 'images/user-profile-bg.jpg' %}" alt="user background">                    
+          </div>
+          <figure class="card-profile-image hide-on-med-and-down">
+              <img src="{{ user.image.url }}" alt="profile image" class="circle z-depth-2 responsive-img activator">
+          </figure>
+          <div class="card-content">
+            <div class="row">                    
+              <div class="col s3 offset-s2">                        
+                  <h4 class="card-title grey-text text-darken-4">{{ user.first_name }} {{ user.last_name }} </h4>
+                  <p class="medium-small grey-text">
+                    {% if request.user.is_admin %}
+                    Administrator
+                    {% endif %}
+                    {% if request.user.is_physio %}
+                    Physio
+                    {% endif %}
+                    {% if request.user.is_doctor %}
+                    Doctor
+                    {% endif %}
+                    {% if request.user.is_coach %}
+                    Coach
+                    {% endif %}
+                  </p>                        
+              </div>                
+            </div>
+          </div>
+      </div>
+      <!--/ profile-page-header -->
+
+      <!-- profile-page-content -->
+      <div id="profile-page-content" class="row">
+        <!-- profile-page-sidebar-->
+        <div id="profile-page-sidebar" class="col s12 m4">
+          <!-- Profile About  -->
+          <div class="card light-blue">
+            <div class="card-content white-text">
+              <span class="card-title">About Me!</span>
+              <p>User Biography here</p>
+            </div>                  
+          </div>
+          <!-- Profile About  -->
+        </div>
+        <!-- profile-page-sidebar-->
+
+        <!-- profile-page-wall -->
+        <div id="profile-page-wall" class="col s12 m8">
+          <!-- profile-page-wall-share -->
+          <div id="profile-page-wall-share" class="row">
+            <div class="col s12">
+              <ul class="tabs tab-profile z-depth-1 light-blue">
+                <li class="tab col s3"><a class="white-text waves-effect waves-light active" href="#Personal"><i class="mdi-editor-border-color"></i>Personal Details</a>
+                </li>                   
+              </ul>
+              <!-- UpdateStatus-->
+              <div id="Personal" class="tab-content col s12  grey lighten-4">
+                <div class="row">
+                  <div class="col s6 center-align">
+                    <h6 class="card-title grey-text text-darken-4">Name</h6>
+                    <p class="medium-small teal-text">{{ user.first_name }}</p>                        
+                  </div>        
+                  <div class="col s6 center-align">
+                    <h6 class="card-title grey-text text-darken-4">Surname</h6>
+                    <p class="medium-small teal-text">{{ user.last_name }}</p>                        
+                  </div>
+                </div><br>
+                <div class="row">        
+                  <div class="col s6 center-align">
+                    <h6 class="card-title grey-text text-darken-4">Email</h6>
+                    <p class="medium-small teal-text">{{ user.email }}</p>                        
+                  </div>    
+                  <div class="col s6 center-align">
+                    <h6 class="card-title grey-text text-darken-4">Club Managed</h6>
+                    <p class="medium-small teal-text">{{ user.club }}</p>                        
+                  </div>      
+                </div><br>
+                <div class="row">
+                  <div class="col s6 center-align">
+                    <h6 class="card-title grey-text text-darken-4">Date Joined</h6>
+                    <p class="medium-small teal-text">{{ user.date_joined }}</p>                        
+                  </div>  
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/ profile-page-wall-share -->
+      </div>
+    </div>
+  </div>
+  </div>
+  <!--end container-->
+</section>
+<!-- END CONTENT -->
+
+{% endblock %}

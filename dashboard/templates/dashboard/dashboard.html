@@ -1,0 +1,247 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<title>Dashboard</title>
+<section id="content">
+
+    <!--breadcrumbs start-->
+    <div id="breadcrumbs-wrapper">
+        <!-- Search for small screen -->
+        <div class="header-search-wrapper grey hide-on-large-only">
+            <i class="mdi-action-search active"></i>
+            <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize">
+        </div>
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m12 l12">
+            <h5 class="breadcrumbs-title">Dashboard</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--breadcrumbs end-->
+
+
+    <!--start container-->
+    <div class="container">
+      <div class="section">
+        <!--card stats start-->
+        <div id="card-stats" class="seaction">
+          <h4 class="header">STATS</h4>
+          <div class="row">
+                        <div class="col s12 m6 l4">
+                            <div class="card">
+                                <div class="card-content  green white-text">
+                                    <p class="card-stats-title"><i class="mdi-action-accessibility"></i>Players</p>
+                                    <h4 class="card-stats-number">{{ player.count }}</h4>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 m6 l4">
+                            <div class="card">
+                                <div class="card-content purple white-text">
+                                    <p class="card-stats-title"><i class="mdi-maps-local-hospital"></i>Injuries Recorded</p>
+                                    <h4 class="card-stats-number">{{ injury.count }}</h4>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>                            
+                        <div class="col s12 m6 l4">
+                            <div class="card">
+                                <div class="card-content blue-grey white-text">
+                                    <p class="card-stats-title"><i class="mdi-action-trending-up"></i>Assessments Made</p>
+                                    <h4 class="card-stats-number">{{ assessment.count }}</h4>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 m6 l4">
+                            <div class="card">
+                                <div class="card-content deep-purple white-text">
+                                    <p class="card-stats-title"><i class="mdi-editor-insert-drive-file"></i>Average Age</p>
+                                    <h4 class="card-stats-number">
+                                      {{ avgage.age__avg}} yrs
+                                    </h4>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 m6 l4">
+                          <div class="card">
+                              <div class="card-content green white-text">
+                                  <p class="card-stats-title"><i class="mdi-maps-directions-walk"></i>Average Height</p>
+                                  <h4 class="card-stats-number">
+                                    {{ avgheight.height__avg.normalize}} m
+                                  </h4>
+                                  </p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col s12 m6 l4">
+                        <div class="card">
+                            <div class="card-content deep-purple white-text">
+                                <p class="card-stats-title"><i class="mdi-image-nature-people"></i>Average Weight</p>
+                                <h4 class="card-stats-number">
+                                  {{ avgweight.weight__avg.normalize}} kgs
+                                </h4>
+                                </p>
+                            </div>
+                        </div>
+                     </div>
+                     
+                     <div class="col s12 m6 l4">
+                      <div class="card">
+                          <div class="card-content blue-grey white-text">
+                              <p class="card-stats-title"><i class="mdi-image-nature-people"></i>Days lost to injuries</p>
+                              <h4 class="card-stats-number">
+                                {{ avgweight.weight__avg.normalize}} kgs
+                              </h4>
+                              </p>
+                          </div>
+                      </div>
+                  </div>     
+                    </div>
+          </div>
+        <!--card stats end-->
+
+        <!--////////////////////////////////////////////////////////////////////////////-->
+        <div class="divider"></div>
+        <!--chart dashboard start-->
+        
+
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+        <div class="divider"></div>
+        <!--work collections start-->
+        <div id="work-collections" class="seaction">
+          
+          <div class="row">
+            <div class="col s12 m12 l6">
+              <h4 class="header">Previous Assessments </h4>
+              <ul id="projects-collection" class="collection">
+                <li class="collection-item avatar">
+                  <i class="mdi-file-folder circle light-blue"></i>
+                  <span class="collection-header">Assessments</span>
+                  <p>Latest</p>
+                  <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>
+                </li>
+                {% for assessment in previous_assessment %}
+                <li class="collection-item">
+                  <div class="row">
+                    <div class="col s6">
+                      <p class="collections-title">{{ assessment.name }} {{ assessment.surname }}</p>
+                      <p class="collections-content">{{ assessment.complaint }}</p>
+                    </div>
+                    <div class="col s3">
+                      <p class="collections-title">Duration</p>
+                      <span class="task-cat orange">{{ assessment.duration }}</span>
+                    </div>
+                    <div class="col s3">
+                      <p class="collections-title">Date Assessed</p>
+                      <p class="collections-content">{{ assessment.date_added }}</p>
+                    </div>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="col s12 m12 l6">
+                <h4 class="header">Issues List</h4>
+                <ul id="issues-collection" class="collection">
+                                <li class="collection-item avatar">
+                                    <i class="mdi-action-bug-report red circle"></i>
+                                    <span class="collection-header">Issues</span>
+                                    <p>Assigned to you</p>
+                                    <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>
+                                </li>
+                                <li class="collection-item">
+                                    <div class="row">
+                                        <div class="col s7">
+                                            <p class="collections-title"><strong>#102</strong> Home Page</p>
+                                            <p class="collections-content">Web Project</p>
+                                        </div>
+                                        <div class="col s2">
+                                            <span class="task-cat pink accent-2">P1</span>
+                                        </div>
+                                        <div class="col s3">
+                                            <div class="progress">
+                                                 <div class="determinate" style="width: 70%"></div>   
+                                            </div>                                                
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="collection-item">
+                                    <div class="row">
+                                        <div class="col s7">
+                                            <p class="collections-title"><strong>#108</strong> API Fix</p>
+                                            <p class="collections-content">API Project </p>
+                                        </div>
+                                        <div class="col s2">
+                                            <span class="task-cat yellow darken-4">P2</span>
+                                        </div>
+                                        <div class="col s3">
+                                            <div class="progress">
+                                                <div class="determinate" style="width: 40%"></div>   
+                                            </div>                                                
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="collection-item">
+                                    <div class="row">
+                                        <div class="col s7">
+                                            <p class="collections-title"><strong>#205</strong> Profile page css</p>
+                                            <p class="collections-content">New Project </p>
+                                        </div>
+                                        <div class="col s2">                                                
+                                            <span class="task-cat light-green darken-3">P3</span>
+                                        </div>
+                                        <div class="col s3">
+                                            <div class="progress">
+                                                <div class="determinate" style="width: 95%"></div>   
+                                            </div>                                                
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="collection-item">
+                                    <div class="row">
+                                        <div class="col s7">
+                                            <p class="collections-title"><strong>#188</strong> SAP Changes</p>
+                                            <p class="collections-content">SAP Project</p>
+                                        </div>
+                                        <div class="col s2">
+                                            <span class="task-cat pink accent-2">P1</span>
+                                        </div>
+                                        <div class="col s3">
+                                            <div class="progress">
+                                                 <div class="determinate" style="width: 10%"></div>   
+                                            </div>                                                
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+            </div>
+          </div>
+          <!-- Floating Action Button -->
+        <div class="fixed-action-btn" style="bottom: 50px; right: 19px;">
+            <a class="btn-floating btn-large">
+              <i class="mdi-action-stars"></i>
+            </a>
+            <ul>
+              <li><a href="css-helpers.html" class="btn-floating red"><i class="large mdi-communication-live-help"></i></a></li>
+              <li><a href="app-widget.html" class="btn-floating yellow darken-1"><i class="large mdi-device-now-widgets"></i></a></li>
+              <li><a href="app-calendar.html" class="btn-floating green"><i class="large mdi-editor-insert-invitation"></i></a></li>
+              <li><a href="app-email.html" class="btn-floating blue"><i class="large mdi-communication-email"></i></a></li>
+            </ul>
+        </div>
+        <!-- Floating Action Button -->
+        </div>
+        <!--work collections end-->
+
+      </div>
+    </div>
+    <!--end container-->
+
+  </section>
+  <!-- END CONTENT -->
+{% endblock %}
+

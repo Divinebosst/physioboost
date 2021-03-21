@@ -1,0 +1,37 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<title>Dashboard</title>
+<div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Add Category</h4>
+                        <ol class="breadcrumb p-0 m-0">
+                            <li>
+                                <a href="#">Admin</a>
+                            </li>
+                            <li>
+                                <a href="#">Category </a>
+                            </li>
+                            <li class="active">
+                                Add Category
+                            </li>
+                        </ol>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+<div class="create-article\">
+    <h2>Create an Awesome New Article</h2>
+    <form action="{% url 'articles:create' %}" class="site-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Create">
+    </form>
+</div>
+
+{% endblock %}

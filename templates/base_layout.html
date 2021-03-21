@@ -1,0 +1,403 @@
+{% load static from static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!--================================================================================
+	Item Name: Materialize - Material Design Admin Template
+	Version: 3.1
+	Author: GeeksLabs
+	Author URL: http://www.themeforest.net/user/geekslabs
+================================================================================ -->
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
+  <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
+
+  <!-- Favicons-->
+  <link rel="icon" href="{% static 'images/favicon/favicon-32x32.png' %}" sizes="32x32">
+  <!-- Favicons-->
+  <link rel="apple-touch-icon-precomposed" href="{% static 'images/favicon/apple-touch-icon-152x152.png' %}">
+  <!-- For iPhone -->
+  <meta name="msapplication-TileColor" content="#00bcd4">
+  <meta name="msapplication-TileImage" content="{% static 'images/favicon/mstile-144x144.png' %}">
+  <!-- For Windows Phone -->
+
+
+  <!-- CORE CSS-->
+  <link href="{% static 'css/materialize.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="{% static 'css/style.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection">
+  <!-- Custome CSS-->    
+  <link href="{% static 'css/custom/custom.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection">
+  
+  
+  <!-- Page Center CSS-->    
+
+  <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+   <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+   <link href="{% static 'js/plugins/prism/prism.css' %}" type="text/css" rel="stylesheet" media="screen,projection">
+   <link href="{% static 'js/plugins/perfect-scrollbar/perfect-scrollbar.css' %}" type="text/css" rel="stylesheet" media="screen,projection">
+   <link href="{% static 'js/plugins/data-tables/css/jquery.dataTables.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection">
+   <link href="{% static 'js/plugins/chartist-js/chartist.min.css" type="text/css' %}" rel="stylesheet" media="screen,projection">
+   <!--dropify-->
+  <link href="{% static 'js/plugins/dropify/css/dropify.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection">
+  <!--jQuery UI-->
+  <link href="{% static 'css/jquery-ui.css' %}" type="text/css" rel="stylesheet" media="screen,projection">
+</head>
+
+<body>
+  <!-- Start Page Loading -->
+  <div id="loader-wrapper">
+      <div id="loader"></div>        
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+  </div>
+  <!-- End Page Loading -->
+
+  <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+  <!-- START HEADER -->
+  <header id="header" class="page-topbar">
+        <!-- start header nav-->
+        <div class="navbar-fixed">
+            <nav class="navbar-color">
+                <div class="nav-wrapper">
+                    <ul class="left">                      
+                      <li><h1 class="logo-wrapper"><a href="{% url 'dashboard:dash'%}" class="brand-logo darken-1"><h5><img src="{% static 'images/logo.png' %}" alt="logo"></h5></a> <span class="logo-text">Materialize</span></h1></li>
+                    </ul>
+                    <div class="header-search-wrapper hide-on-med-and-down">
+                        <i class="mdi-action-search"></i>
+                        <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore"/>
+                    </div>
+                    <ul class="right hide-on-med-and-down">
+                        </li>
+                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen"><i class="mdi-action-settings-overscan"></i></a>
+                        </li>
+                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light notification-button" data-activates="notifications-dropdown"><i class="mdi-social-notifications"><small class="notification-badge">5</small></i>
+                        
+                        </a>
+                        </li>                        
+                        <li><a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse"><i class="mdi-communication-chat"></i></a>
+                        </li>
+                    </ul>
+                    <!-- translation-button -->
+                    <ul id="translation-dropdown" class="dropdown-content">
+                      <li>
+                        <a href="#!"><img src="{% static 'images/flag-icons/United-States.png' %}" alt="English" />  <span class="language-select">English</span></a>
+                      </li>
+                      <li>
+                        <a href="#!"><img src="{% static 'images/flag-icons/France.png' %}" alt="French" />  <span class="language-select">French</span></a>
+                      </li>
+                      <li>
+                        <a href="#!"><img src="{% static 'images/flag-icons/China.png' %}" alt="Chinese" />  <span class="language-select">Chinese</span></a>
+                      </li>
+                      <li>
+                        <a href="#!"><img src="{% static 'images/flag-icons/Germany.png' %}" alt="German" />  <span class="language-select">German</span></a>
+                      </li>
+                      
+                    </ul>
+                    <!-- notifications-dropdown -->
+                    <ul id="notifications-dropdown" class="dropdown-content">
+                      <li>
+                        <h5>NOTIFICATIONS <span class="new badge">5</span></h5>
+                      </li>
+                      <li class="divider"></li>
+                      <li>
+                        <a href="#!"><i class="mdi-action-add-shopping-cart"></i> A new order has been placed!</a>
+                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">2 hours ago</time>
+                      </li>
+                      <li>
+                        <a href="#!"><i class="mdi-action-stars"></i> Completed the task</a>
+                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">3 days ago</time>
+                      </li>
+                      <li>
+                        <a href="#!"><i class="mdi-action-settings"></i> Settings updated</a>
+                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">4 days ago</time>
+                      </li>
+                      <li>
+                        <a href="#!"><i class="mdi-editor-insert-invitation"></i> Director meeting started</a>
+                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">6 days ago</time>
+                      </li>
+                      <li>
+                        <a href="#!"><i class="mdi-action-trending-up"></i> Generate monthly report</a>
+                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">1 week ago</time>
+                      </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- end header nav-->
+  </header>
+  <!-- END HEADER -->
+
+  <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+  <!-- START MAIN -->
+  <div id="main">
+    <!-- START WRAPPER -->
+    <div class="wrapper">
+
+      <!-- START LEFT SIDEBAR NAV-->
+      <aside id="left-sidebar-nav">
+        <ul id="slide-out" class="side-nav fixed leftside-navigation">
+            <li class="user-details cyan darken-2">
+            <div class="row">
+                <div class="col col s4 m4 l4">
+                    <img src="{{ user.image.url }}" alt="" class="circle responsive-img valign profile-image">
+                </div>
+                <div class="col col s8 m8 l12">
+                    <ul id="profile-dropdown" class="dropdown-content">
+                        <li><a href="{% url 'account:view_profile' %}"><i class="mdi-action-face-unlock"></i>View Profile</a>
+                        </li>
+                        <li><a href="{% url 'account:edit_profile' %}"><i class="mdi-action-settings"></i> Edit Profile</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="{% url 'account:change_password' %}"><i class="mdi-action-lock-outline"></i>Change Password</a>
+                        </li>
+                        <li><a href="#modal3" class="modal-trigger"><i class="mdi-hardware-keyboard-tab"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">{{ request.user.first_name }}<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                    {% if request.user.is_admin %}
+                    <p class="user-roal">Administrator</p>
+                    {% endif %}
+                    {% if request.user.is_physio %}
+                    <p class="user-roal">Physio</p>
+                    {% endif %}
+                    {% if request.user.is_doctor %}
+                    <p class="user-roal">Doctor</p>
+                    {% endif %}
+                    {% if request.user.is_coach %}
+                    <p class="user-roal">Coach</p>
+                    {% endif %}
+                </div>
+            </div>
+            </li>
+            <li class="bold"><a href="{% url 'dashboard:dash' %}" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
+            </li>
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-maps-directions-walk"></i>Players</a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="{% url 'players:add_player' %}">Add Players</a>
+                                </li>
+                                <li><a href="{% url 'players:view' %}">View Players</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-maps-local-hospital"></i>Injuries</a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="{% url 'injuries:add_injury' %}">Add Injuries</a>
+                                </li>
+                                <li><a href="{% url 'injuries:view_injuries' %}">View Injuries</a>
+                                </li>
+                                <li><a href="{% url 'injuries:view_players' %}">Injury Prediction</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-editor-border-color"></i>Assessments</a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="{% url 'assessment:player_assessment' %}">Add Assessments</a>
+                                </li>
+                                <li><a href="{% url 'assessment:view_assess' %}">View Assessments</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="no-padding">
+              <ul class="collapsible collapsible-accordion">
+                  <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-notification-event-note"></i>Stats</a>
+                      <div class="collapsible-body">
+                          <ul>
+                              <li><a href="{% url 'stats:players' %}">Players</a>
+                              </li>
+                          </ul>
+                      </div>
+                  </li>
+              </ul>
+          </li>
+          <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-maps-local-play"></i>Leagues</a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="{% url 'leagues:view_leagues' %}">View Leagues</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li class="no-padding">
+          <ul class="collapsible collapsible-accordion">
+              <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-maps-local-play"></i>Status</a>
+                  <div class="collapsible-body">
+                      <ul>
+                          <li><a href="{% url 'status:players' %}">Players</a>
+                          </li>
+                      </ul>
+                      <ul>
+                        <li><a href="{% url 'status:tracker' %}">Tracker</a>
+                        </li>
+                    </ul>
+                  </div>
+              </li>
+          </ul>
+      </li>
+        </ul>
+        <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
+        </aside>
+
+      <!-- END LEFT SIDEBAR NAV-->
+
+      <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+      <!-- START CONTENT -->
+      {% block content %}
+
+      {% endblock %}
+      </div>
+    </div>
+    <!-- END WRAPPER -->
+
+  </div>
+  <!-- END MAIN -->
+
+  <!--Modal Footer-->
+  <div id="modal3" class="modal">
+    <div class="modal-content pink white-text">
+      <p>Do you really want to logout?</p>
+      <small>Logging out will disrupt all progress made</small>
+    </div>
+    <div class="modal-footer  pink lighten-2">
+      <a href="#" class="waves-effect waves-red btn-flat white-text modal-action modal-close">Cancel</a>
+      <a href="{% url 'account:logout' %}" class="waves-effect waves-green btn-flat white-text modal-action modal-close">Logout</a>
+    </div>
+  </div>
+
+
+
+  <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+  <!-- START FOOTER -->
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">
+        <span>Copyright © {% now "Y"  %}  <a class="grey-text text-lighten-4" href="#" target="_blank">PhysioBoost</a> All rights reserved.</span>
+        <span class="right"> Developed by <a class="grey-text text-lighten-4" href="#">Divine Takawira</a></span>
+        </div>
+    </div>
+  </footer>
+    <!-- END FOOTER -->
+
+
+
+    <!-- ================================================
+    Scripts
+    ================================================ -->
+    
+    <!-- jQuery Library -->
+    <script type="text/javascript" src="{% static 'js/plugins/jquery-1.11.2.min.js' %}"></script>
+    <!--jQuery UI-->
+    <script type="text/javascript" src="{% static 'js/jquery-ui.js' %}"></script>       
+    <!--angularjs-->
+    <script type="text/javascript" src="{% static 'js/plugins/angular.min.js' %}"></script>
+    <!--materialize js-->
+    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+    <!--prism -->
+    <script type="text/javascript" src="{% static 'js/plugins/prism/prism.js' %}"></script>
+    <!--scrollbar-->
+    <script type="text/javascript" src="{% static 'js/plugins/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <!-- chartist -->
+    <script type="text/javascript" src="{% static 'js/plugins/chartist-js/chartist.min.js' %}"></script>
+    <!-- chartjs -->
+    <script type="text/javascript" src="{% static 'js/plugins/chartjs/chart.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/plugins/chartjs/chart-script.js' %}"></script>   
+    <!-- sparkline -->
+    <script type="text/javascript" src="{% static 'js/plugins/sparkline/jquery.sparkline.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/plugins/sparkline/sparkline-script.js' %}"></script>
+    <!--nestable -->
+    <link href="{% static 'js/plugins/jquery.nestable/nestable.css' %}" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- data-tables -->
+    <script type="text/javascript" src="{% static 'js/plugins/data-tables/js/jquery.dataTables.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/plugins/data-tables/data-tables-script.js' %}"></script>
+    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+     <!-- dropify -->
+     <script type="text/javascript" src="{% static 'js/plugins/dropify/js/dropify.min.js' %}"></script>
+     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+    <script type="text/javascript" src="{% static 'js/plugins.min.js' %}"></script>
+    <!--custom-script.js - Add your own theme custom JS-->
+    <script type="text/javascript" src="{% static 'js/custom-script.js' %}"></script>
+    <script type="text/javascript">
+        /*Show entries on click hide*/
+        $(document).ready(function(){
+            $(".dropdown-content.select-dropdown li").on( "click", function() {
+                var that = this;
+                setTimeout(function(){
+                if($(that).parent().hasClass('active')){
+                        $(that).parent().removeClass('active');
+                        $(that).parent().hide();
+                }
+                },100);
+            });
+        });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          // Basic
+          $('.dropify').dropify();
+
+          // Translated
+          $('.dropify-fr').dropify({
+              messages: {
+                  default: 'Glissez-déposez un fichier ici ou cliquez',
+                  replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                  remove:  'Supprimer',
+                  error:   'Désolé, le fichier trop volumineux'
+              }
+          });
+
+          // Used events
+          var drEvent = $('.dropify-event').dropify();
+
+          drEvent.on('dropify.beforeClear', function(event, element){
+              return confirm("Do you really want to delete \"" + element.filename + "\" ?");
+          });
+
+          drEvent.on('dropify.afterClear', function(event, element){
+              alert('File deleted');
+          });
+      });
+  </script>
+  <script>
+    $( function() {
+      $( "#id_diagnosis" ).autocomplete({
+        source: "{{ request.get_full_path }}"
+      });
+    } );
+  </script>
+</body>
+
+</html>

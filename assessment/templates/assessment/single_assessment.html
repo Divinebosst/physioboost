@@ -1,0 +1,302 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<title>PhysioBoost: View Assessment</title>
+ <!-- START CONTENT -->
+ <section id="content">
+        
+    <!--breadcrumbs start-->
+    <div id="breadcrumbs-wrapper">
+        <!-- Search for small screen -->
+        <div class="header-search-wrapper grey hide-on-large-only">
+            <i class="mdi-action-search active"></i>
+            <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize">
+        </div>
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m12 l12">
+            <h5 class="breadcrumbs-title">View Assessment</h5>
+            <ol class="breadcrumbs">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="#">Assessments</a></li>
+                <li class="active">View Assessment</li>
+            </ol>
+            {% for message in messages %}
+            <div id="card-alert" class="card {{ message.tags }}">
+                <div class="card-content white-text">
+                  <p>{{ message }}</p>
+                </div>
+                <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+          </div>
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--breadcrumbs end-->
+<!--start container-->
+<div class="container">
+  <div class="section">
+      <div class="row">
+        <h3 class="center">{{ assessment.name }} {{ assessment.surname }}</h3>
+        <h4 class="center">Assessed on {{ assessment.date_added }}</h4><br>
+        <h4 class="center">SUBJECTIVE ASSESSMENT</h4>
+        <h5 class="center">Presenting Complaints</h5><br>
+
+        <div class="col s12 m8 l12">
+          <table class="striped">
+            <thead>
+              <tr>
+                  <th>PRESENTING COMPLAINT</th>
+                  <th>HISTORY</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ assessment.complaint }}</td>
+                <td>{{ assessment.history }}</td>
+              </tr>
+            </tbody>
+          </table><br>
+        </div>
+
+        <h5 class="center">Characteristics</h5><br>
+
+        <div class="col s12 m8 l12">
+          <table class="striped">
+            <thead>
+              <tr>
+                  <th>DURATION</th>
+                  <th>INTENSITY</th>
+                  <th>LOCATION</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ assessment.duration }}</td>
+                <td>{{ assessment.intensity }}</td>
+                <td>{{ assessment.location }}</td>
+              </tr>
+            </tbody>
+          </table><br>
+        </div>
+
+        <h5 class="center">Investigations</h5><br>
+        <h6 class="center">X-Ray</h6>
+        <div class="col s12 m8 l12">
+          <table class="striped">
+            <thead>
+              <tr>
+                  <th>X-RAY</th>
+                  <th>VIEW</th>
+                  <th>FINDINGS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ assessment.x_ray }}</td>
+                <td>{{ assessment.view }}</td>
+                <td>{{ assessment.findings }}</td>
+              </tr>
+            </tbody>
+          </table><br>
+        </div>
+        <h4 class="center">OBJECTIVE ASSESSMENT</h4>
+        <h5 class="center">General Observations</h5>
+        <h5 class="center">Palpation</h5><br>
+
+        <div class="col s12 m8 l12">
+          <table class="striped">
+            <thead>
+              <tr>
+                  <th>TENDERNESS GRADE</th>
+                  <th>SPASM</th>
+                  <th>SCAR</th>
+                  <th>SWELLING</th>
+                  <th>SKIN</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ assessment.tenderness_grade }}</td>
+                <td>{{ assessment.spasm }}</td>
+                <td>{{ assessment.scar }}</td>
+                <td>{{ assessment.swelling }}</td>
+                <td>{{ assessment.skin }}</td>
+              </tr>
+            </tbody>
+          </table><br>
+        </div>
+
+        <h5 class="center">Range of Motion</h5><br>
+
+        <div class="col s12 m8 l12">
+          <table class="striped">
+            <thead>
+              <tr>
+                  <th>JOINT</th>
+                  <th>ROM</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ assessment.join }}</td>
+                <td>{{ assessment.rom }}</td>
+              </tr>
+            </tbody>
+          </table><br>
+        </div>
+
+        <h5 class="center">Manual Muscle Testing</h5><br>
+
+        <div class="col s12 m8 l12">
+          <table class="striped">
+            <thead>
+              <tr>
+                  <th>MUSCLE GROUP</th>
+                  <th>MRC GRADE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ assessment.muscle_group }}</td>
+                <td>{{ assessment.mrc_grade }}</td>
+              </tr>
+            </tbody>
+          </table><br>
+        </div>
+
+        <h5 class="center">End Feels</h5><br>
+
+        <div class="col s12 m8 l12">
+          <table class="striped">
+            <thead>
+              <tr>
+                  <th>END FEEL</th>
+                  <th>TYPES</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ assessment.end_feel }}</td>
+                <td>{{ assessment.types }}</td>
+              </tr>
+            </tbody>
+          </table><br>
+        </div>
+
+        <h5 class="center">Reflexes</h5><br>
+
+        <div class="col s12 m8 l12">
+          <table class="striped">
+            <thead>
+              <tr>
+                  <th>REFLEX TYPE</th>
+                  <th>REFLEX CONDITION</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ assessment.reflex_type }}</td>
+                <td>{{ assessment.reflex_condition }}</td>
+              </tr>
+            </tbody>
+          </table><br>
+        </div>
+
+        <h4 class="center">FUNCTIONAL ASSESSMENT</h4>
+        <h5 class="center">Special Tests</h5><br>
+
+        <div class="col s12 m8 l12">
+          <table class="striped">
+            <thead>
+              <tr>
+                  <th>TEST</th>
+                  <th>RESULT</th>
+                  <th>INTERPRETATION</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ assessment.test}}</td>
+                <td>{{ assessment.result }}</td>
+                <td>{{ assessment.interpretation }}</td>
+              </tr>
+            </tbody>
+          </table><br>
+        </div>
+
+        <h5 class="center">Gait Assessment</h5><br>
+
+        <div class="col s12 m8 l12">
+          <table class="striped">
+            <thead>
+              <tr>
+                  <th>TYPE OF GAIT</th>
+                  <th>STEP LENGTH</th>
+                  <th>STRIDE LENGTH</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ assessment.type_of_gait }}</td>
+                <td>{{ assessment.step_length }}</td>
+                <td>{{ assessment.stride_length }}</td>
+              </tr>
+            </tbody>
+          </table><br>
+        </div>
+
+        <h5 class="center">Treatment Plan</h5><br>
+
+        <div class="col s12 m8 l12">
+          <table class="striped">
+            <thead>
+              <tr>
+                  <th>MODALITIES</th>
+                  <th>MANIPULATIONS</th>
+                  <th>SPLINTS</th>
+                  <th>EXERCISES</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ assessment.modalities }}</td>
+                <td>{{ assessment.manipulations }}</td>
+                <td>{{ assessment.splints }}</td>
+                <td>{{ assessment.exercises }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>    
+    </div>
+  </div>
+</div>
+
+ <!-- Floating Action Button -->
+ <div class="fixed-action-btn" style="bottom: 50px; right: 19px;">
+  <a class="btn-floating btn-large">
+    <i class="mdi-action-stars"></i>
+  </a>
+  <ul>
+    <li><a href="css-helpers.html" class="btn-floating red"><i class="large mdi-communication-live-help"></i></a></li>
+    <li><a href="app-widget.html" class="btn-floating yellow darken-1"><i class="large mdi-device-now-widgets"></i></a></li>
+    <li><a href="app-calendar.html" class="btn-floating green"><i class="large mdi-editor-insert-invitation"></i></a></li>
+    <li><a href="app-email.html" class="btn-floating blue"><i class="large mdi-communication-email"></i></a></li>
+  </ul>
+</div>
+<!-- Floating Action Button -->
+
+</div>
+<!--end container-->
+
+
+
+
+
+</section>
+<!-- END CONTENT -->
+  {% endblock %}

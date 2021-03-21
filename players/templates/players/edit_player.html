@@ -1,0 +1,168 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<title>PhysioBoost Admin: Edit Player </title>
+<section id="content">
+
+    <!--breadcrumbs start-->
+    <div id="breadcrumbs-wrapper">
+        <!-- Search for small screen -->
+        <div class="header-search-wrapper grey hide-on-large-only">
+            <i class="mdi-action-search active"></i>
+            <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize">
+        </div>
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m12 l12">
+            <h5 class="breadcrumbs-title">Edit Player</h5>
+            <ol class="breadcrumbs">
+              <li><a href="index.html">Dashboard</a>
+              </li>
+              <li><a href="#">Players</a>
+              </li>
+              <li class="active">Edit Player</li>
+            </ol>
+            {% for message in messages %}
+            <div id="card-alert" class="card {{ message.tags }}">
+                <div class="card-content white-text">
+                  <p>{{ message }}</p>
+                </div>
+                <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <!--breadcrumbs end-->
+
+
+    <!--start container-->
+    <div class="container">
+      <div class="section">
+        <!--Input fields-->
+        <div id="input-fields">
+          <div class="row">
+            <div class="col s12 m8 l12">
+              <div class="row">
+                <form class="col s12" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                  <div class="row">
+                    <div class="input-field col s6">
+                        <i class="mdi-action-account-circle prefix"></i>
+                        {{ form.name }}
+                      <label for="first_name">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="mdi-action-account-circle prefix"></i>
+                        {{ form.surname }}
+                      <label for="last_name">Last Name</label>
+                    </div>
+                  </div><br>
+                  
+                  <div class="row">
+                    <div id="input-date-picker" class="input-field col s6">
+                        <i class="mdi-editor-insert-invitation prefix"></i>
+                        {{ form.date_of_birth }}
+                        <label for="input-date-picker">Date of Birth</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="mdi-action-account-circle prefix"></i>
+                        {{ form.nationality }}
+                      <label for="nationality">Nationality</label>
+                    </div>
+                  </div><br>
+
+                  <div class="row">
+                    <div class="input-field col s6">
+                        <i class="mdi-editor-insert-invitation prefix"></i>
+                        {{ form.address }}
+                        <label for="address">Address</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="mdi-action-account-circle prefix"></i>
+                        {{ form.height }}
+                      <label for="height">Height</label>
+                    </div>
+                  </div><br>
+
+                  <div class="row">
+                    <div class="input-field col s6">
+                        <i class="mdi-editor-insert-invitation prefix"></i>
+                        {{ form.weight }}
+                        <label for="weight">Weight</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="mdi-action-account-circle prefix"></i>
+                        <div class="select-wrapper">
+                            {{ form.preferred_foot }}
+                            <label class="label-wrapper" for="preferred_foot">Preferred Foot</label>
+                        </div>
+                    </div>
+                  </div><br>
+
+                  <div class="row">
+                    <div class="input-field col s6">
+                        <i class="mdi-action-account-circle prefix"></i>
+                        <div class="select-wrapper">
+                            {{ form.position }}
+                            <label class="label-wrapper" for="position">Position</label>
+                        </div>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <i class="mdi-editor-insert-invitation prefix"></i>
+                        {{ form.jersey_number }}
+                        <label for="jersey_number">Jersey Number</label>
+                    </div>
+                  </div><br>
+
+                  <div class="row">
+                    <div class="input-field col s6">
+                        <i class="mdi-action-account-circle prefix"></i>
+                        {{ form.strengths }}
+                      <label for="strengths">Strengths</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="mdi-action-account-circle prefix"></i>
+                        {{ form.weaknesses }}
+                      <label for="weaknesses">Weaknesses</label>
+                    </div>
+                  </div><br>
+
+                  <div class="row">
+                    <div class="input-field col s6">
+                        <i class="mdi-action-account-circle prefix"></i>
+                        <div class="select-wrapper">
+                            {{ form.club }}
+                            <label class="label-wrapper" for="club">Club</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <p>Upload an Image</p>
+                        {{ form.image }}
+                        {{ form.image.errors }}
+                    </div>
+                 </div><br>
+                  <div class="center">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Edit Player</button>
+                  </div><br>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <!-- Floating Action Button -->
+</div>
+<!--end container-->
+
+</section>
+<!-- END CONTENT -->
+
+{% endblock %}
+
