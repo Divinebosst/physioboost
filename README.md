@@ -1,10 +1,12 @@
 First of all make sure that the Local Server is running (Xampp, Mampp e.t.c)
 
+Create a MySql database named physioboost in PhpMyAdmin
+
 # To set up the environment, first install all requirements in the requirements.txt file (Make sure you open your command line in the directory which contains the requirements.txt file). Do this by running the following command:
 
 pip install -r requirements.txt --no-index --find-links file:///tmp/packages
 
-Then reset all your migrations by running the following one after the otherr:
+Then reset all your migrations by running the following one after the other:
 
 python manage.py makemigrations
 python manage.py migrate --fake-initial
